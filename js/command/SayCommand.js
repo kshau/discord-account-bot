@@ -8,7 +8,7 @@ class SayCommand extends Command {
     static async call(args, sender, token, channel_id) {
 
         if (args.length < 2) {
-            await MessageSender.send("Invalid arguments!", token, channel_id);
+            await MessageSender.send("**Invalid arguments!**", token, channel_id);
             return false;
         }
 
