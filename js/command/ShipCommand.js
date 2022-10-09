@@ -5,10 +5,10 @@ class ShipCommand extends Command {
 
     static command = "!kshship";
 
-    static async call(content, msgId, sender, token, channel_id) {
+    static async call(args, msgId, sender, token, channel_id) {
 
         if (args.length < 3 || args.length > 5) {
-            await MessageSender.send("**Invalid arguments!**", token, channel_id);
+            await MessageSender.reply(msgId, "**Invalid arguments!**", token, channel_id);
             return false;
         }
 
@@ -20,7 +20,7 @@ class ShipCommand extends Command {
             id2 = args[2].match(/\d+/)[0];
         }
         catch (TypeError) {
-            await MessageSender.send("**Invalid arguments!**", token, channel_id);
+            await MessageSender.reply(msgId, "**Invalid arguments!**", token, channel_id);
             return false;
         }
 
@@ -44,7 +44,7 @@ class ShipCommand extends Command {
             relation = "Horrible! :broken_heart:";
         }
 
-        await MessageSender.send(`**${result}%** ${relation}`, token, channel_id);
+        await MessageSender.reply(msgId, `**${result}%** ${relation}`, token, channel_id);
 
         return true;
 
