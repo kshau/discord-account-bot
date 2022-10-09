@@ -3,7 +3,7 @@ const WebSocket = require("ws");
 const {SayCommand} = require("./js/command/SayCommand");
 const {ShipCommand} = require("./js/command/ShipCommand");
 
-const TOKEN = "NzY4MTgxMjc3ODE0Njg1NzA2.Glj2dn.9J7WSQslE6elSa6WSeD1avgO4qcy5w9UiE--ks";
+const TOKEN = "NzY4MTgxMjc3ODE0Njg1NzA2.G57ssA.VAZrDJFFbOfOUVVOLkxp3I7zJhLssIx50RrhfI";
 
 const REGISTERED_CMDS = [
     SayCommand, 
