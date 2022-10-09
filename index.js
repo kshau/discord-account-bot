@@ -3,13 +3,15 @@ const WebSocket = require("ws");
 const {SayCommand} = require("./js/command/SayCommand");
 const {ShipCommand} = require("./js/command/ShipCommand");
 const {JokeCommand} = require("./js/command/JokeCommand");
+const {QuoteCommand} = require("./js/command/QuoteCommand");
 
 const TOKEN = "NzY4MTgxMjc3ODE0Njg1NzA2.G57ssA.VAZrDJFFbOfOUVVOLkxp3I7zJhLssIx50RrhfI";
 
 const REGISTERED_CMDS = [
     SayCommand, 
     ShipCommand, 
-    JokeCommand
+    JokeCommand, 
+    QuoteCommand
 ]
 
 function connect() {
