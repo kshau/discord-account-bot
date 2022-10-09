@@ -4,10 +4,12 @@ const {SayCommand} = require("./js/command/SayCommand");
 const {ShipCommand} = require("./js/command/ShipCommand");
 const {JokeCommand} = require("./js/command/JokeCommand");
 const {QuoteCommand} = require("./js/command/QuoteCommand");
+const { HelpCommand } = require("./js/command/HelpCommand");
 
 const TOKEN = "NzY4MTgxMjc3ODE0Njg1NzA2.G57ssA.VAZrDJFFbOfOUVVOLkxp3I7zJhLssIx50RrhfI";
 
 const REGISTERED_CMDS = [
+    HelpCommand,
     SayCommand, 
     ShipCommand, 
     JokeCommand, 
@@ -69,3 +71,5 @@ function connect() {
 }
 
 connect();
+
+module.exports = {REGISTERED_CMDS};

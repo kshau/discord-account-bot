@@ -7,6 +7,8 @@ class SayCommand extends Command {
 
     static cooldownMs = 10000;
 
+    static description = "Quotes something someone said | __<text>__"
+
     static async call(args, msgId, sender, token, channel_id) {
 
         if (args.length < 2) {

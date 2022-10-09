@@ -8,6 +8,8 @@ class JokeCommand extends Command {
 
     static cooldownMs = 5000;
 
+    static description = "Tells a random Joke";
+
     static async call(args, msgId, sender, token, channel_id) {
 
         var jokeRes = await fetch("https://official-joke-api.appspot.com/random_joke");

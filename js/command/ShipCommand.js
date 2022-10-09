@@ -7,6 +7,8 @@ class ShipCommand extends Command {
 
     static cooldownMs = 3000;
 
+    static description = "Matchmakes two people | __<mention> <mention>__"
+
     static async call(args, msgId, sender, token, channel_id) {
 
         if (args.length < 3 || args.length > 5) {

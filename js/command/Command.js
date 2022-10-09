@@ -7,6 +7,8 @@ class Command {
     static cooldownMs = null;
     static cooldownIds = [];
 
+    static description = null;
+
     static listen(content, msgId, sender, token, channel_id) {
 
         if (content.toLowerCase().startsWith(this.command)) {

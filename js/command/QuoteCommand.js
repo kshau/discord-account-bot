@@ -8,6 +8,8 @@ class QuoteCommand extends Command {
 
     static cooldownMs = 15000;
 
+    static description = "Tells a random inspirational quote"
+
     static async call(args, msgId, sender, token, channel_id) {
 
         var quoteRes = await fetch("https://zenquotes.io/api/random");
