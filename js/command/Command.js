@@ -21,8 +21,6 @@ class Command {
                 this.call(args, sender, token, channel_id).then();
                 this.cooldownIds.push(sender.id);
 
-                console.log(this.cooldownIds);
-
                 setTimeout(() => {
                     this.cooldownIds.splice(this.cooldownIds.indexOf(sender.id), 1);
                 }, 3000)
