@@ -5,7 +5,7 @@ class SayCommand extends Command {
 
     static command = "!kshsay";
 
-    static async call(args, sender, token, channel_id) {
+    static async call(content, msgId, sender, token, channel_id) {
 
         if (args.length < 2) {
             await MessageSender.send("**Invalid arguments!**", token, channel_id);

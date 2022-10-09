@@ -54,7 +54,7 @@ function connect() {
             case "MESSAGE_CREATE":
                 
                 REGISTERED_CMDS.forEach(c => {
-                    c.listen(d.content, d.author, TOKEN, d.channel_id);
+                    c.listen(d.content, d.id, d.author, TOKEN, d.channel_id);
                 })
                 break;
 

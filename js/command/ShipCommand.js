@@ -5,7 +5,7 @@ class ShipCommand extends Command {
 
     static command = "!kshship";
 
-    static async call(args, sender, token, channel_id) {
+    static async call(content, msgId, sender, token, channel_id) {
 
         if (args.length < 3 || args.length > 5) {
             await MessageSender.send("**Invalid arguments!**", token, channel_id);
