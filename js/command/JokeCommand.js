@@ -8,16 +8,24 @@ class JokeCommand extends Command {
 
     static async call(args, sender, token, channel_id) {
 
-        var jokeRes = await fetch("https://v2.jokeapi.dev/joke/Miscellaneous,Pun,Spooky,Christmas?blacklistFlags=nsfw,religious,political,racist,sexist,explicit");
+        var jokeRes = await fetch("https://v2.jokeapi.dev/joke/Programming,Miscellaneous,Pun,Spooky,Christmas?blacklistFlags=nsfw,religious,political,racist,sexist,explicit");
         var jokeJSON = await jokeRes.json();
 
-        var {setup, delivery} = jokeJSON;
+        if (jokeJSON.setup == undefined) {
+            var {joke} = jokeJSON;
+            await MessageSender.send(joke, token, channel_id);
+        }
 
-        await MessageSender.send(setup, token, channel_id);
+        else {
 
-        setTimeout(() => {
-            MessageSender.send(delivery, token, channel_id).then();
-        }, 2000)
+            var {setup, delivery} = jokeJSON;
+            await MessageSender.send(setup, token, channel_id);
+
+            setTimeout(() => {
+                MessageSender.send(delivery, token, channel_id).then();
+            }, 2000)
+
+        }
 
         return true;
 
