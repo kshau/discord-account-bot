@@ -6,6 +6,8 @@ class QuoteCommand extends Command {
 
     static command = "!kshquote";
 
+    static cooldownMs = 15000;
+
     static async call(args, msgId, sender, token, channel_id) {
 
         var quoteRes = await fetch("https://zenquotes.io/api/random");

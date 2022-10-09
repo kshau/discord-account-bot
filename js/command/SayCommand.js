@@ -5,6 +5,8 @@ class SayCommand extends Command {
 
     static command = "!kshsay";
 
+    static cooldownMs = 10000;
+
     static async call(args, msgId, sender, token, channel_id) {
 
         if (args.length < 2) {

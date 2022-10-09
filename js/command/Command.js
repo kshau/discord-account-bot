@@ -4,6 +4,7 @@ class Command {
 
     static command = null;
 
+    static cooldownMs = null;
     static cooldownIds = [];
 
     static listen(content, msgId, sender, token, channel_id) {
@@ -11,7 +12,7 @@ class Command {
         if (content.toLowerCase().startsWith(this.command)) {
 
             if (this.cooldownIds.includes(sender.id)) {
-                MessageSender.send("**That command is on cooldown!**", token, channel_id);
+                MessageSender.send(`**That command has a ${this.cooldownMs / 1000} second cooldown!**`, token, channel_id);
             }
 
             else {
@@ -23,7 +24,7 @@ class Command {
 
                 setTimeout(() => {
                     this.cooldownIds.splice(this.cooldownIds.indexOf(sender.id), 1);
-                }, 3000)
+                }, this.cooldownMs)
 
             }
 
