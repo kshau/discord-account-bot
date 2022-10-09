@@ -27,7 +27,7 @@ class HelpCommand extends Command {
         var msg = ">>> **:dizzy: kshaurya731 :dizzy:**\n══════════════════";
 
         CMDS.forEach(c => {
-            msg += "\n:arrow_right: __" + c.command + "__ - **" + c.description + "**";
+            msg += "\n:arrow_right: **" + c.command + "** - " + c.description;
         });
 
         MessageSender.send(msg, token, channel_id);
