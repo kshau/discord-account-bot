@@ -10,10 +10,10 @@ class SayCommand extends Command {
 
     static description = "Quotes something someone said | __<text>__"
 
-    static async call(args, msgId, sender, token, channel_id) {
+    static async call(args, data, token) {
 
         if (args.length < 2) {
-            await MessageSender.reply(msgId, "**Invalid arguments!**", token, channel_id);
+            await MessageSender.reply(data.id, "**Invalid arguments!**", token, data.channel_id);
             return false;
         }
 
@@ -25,7 +25,7 @@ class SayCommand extends Command {
             }
         }
 
-        await MessageSender.send(`"${msg}" **~ ${sender.username}#${sender.discriminator}**`, token, channel_id);
+        await MessageSender.send(`"${msg}" **~ ${data.author.username}#${data.author.discriminator}**`, token, data.channel_id);
 
         return true;
 

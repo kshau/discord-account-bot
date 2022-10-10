@@ -1,4 +1,5 @@
 const WebSocket = require("ws");
+const DotEnv = require("dotenv");
 
 const {SayCommand} = require("./js/command/SayCommand");
 const {ShipCommand} = require("./js/command/ShipCommand");
@@ -6,7 +7,9 @@ const {JokeCommand} = require("./js/command/JokeCommand");
 const {QuoteCommand} = require("./js/command/QuoteCommand");
 const { HelpCommand } = require("./js/command/HelpCommand");
 
-const TOKEN = "NzY4MTgxMjc3ODE0Njg1NzA2.G57ssA.VAZrDJFFbOfOUVVOLkxp3I7zJhLssIx50RrhfI";
+DotEnv.config();
+
+const TOKEN = process.env.TOKEN;
 
 const REGISTERED_CMDS = [
     HelpCommand,
@@ -16,7 +19,7 @@ const REGISTERED_CMDS = [
     QuoteCommand
 ]
 
-function connect() {
+function wsConnect() {
 
     var ws = new WebSocket("wss://gateway.discord.gg/?v=10&encoding=json");
     var interval;
@@ -58,7 +61,7 @@ function connect() {
             case "MESSAGE_CREATE":
                 
                 REGISTERED_CMDS.forEach(c => {
-                    c.listen(d.content, d.id, d.author, TOKEN, d.channel_id);
+                    c.listen(d, TOKEN);
                 })
                 break;
 
@@ -66,10 +69,8 @@ function connect() {
         
     })
 
-    ws.on("close", connect);
+    ws.on("close", wsConnect);
 
 }
 
-connect();
-
-module.exports = {REGISTERED_CMDS};
+wsConnect();

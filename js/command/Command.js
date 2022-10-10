@@ -9,23 +9,23 @@ class Command {
 
     static description = null;
 
-    static listen(content, msgId, sender, token, channel_id) {
+    static listen(data, token) {
 
-        if (content.toLowerCase().startsWith(this.command)) {
+        if (data.content.toLowerCase().startsWith(this.command)) {
 
-            if (this.cooldownIds.includes(sender.id)) {
-                MessageSender.send(`**That command has a ${this.cooldownMs / 1000} second cooldown!**`, token, channel_id);
+            if (this.cooldownIds.includes(data.author.id)) {
+                MessageSender.send(`**That command has a ${this.cooldownMs / 1000} second cooldown!**`, token, data.channel_id);
             }
 
             else {
 
-                var args = content.split(" ");
+                var args = data.content.replace(/ +(?= )/g,'').split(" ");
 
-                this.call(args, msgId, sender, token, channel_id).then();
-                this.cooldownIds.push(sender.id);
+                this.call(args, data, token).then();
+                this.cooldownIds.push(data.author.id);
 
                 setTimeout(() => {
-                    this.cooldownIds.splice(this.cooldownIds.indexOf(sender.id), 1);
+                    this.cooldownIds.splice(this.cooldownIds.indexOf(data.author.id), 1);
                 }, this.cooldownMs)
 
             }

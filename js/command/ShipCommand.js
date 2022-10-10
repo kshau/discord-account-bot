@@ -10,10 +10,10 @@ class ShipCommand extends Command {
 
     static description = "Matchmakes two people | __<mention> <mention>__"
 
-    static async call(args, msgId, sender, token, channel_id) {
+    static async call(args, data, token) {
 
         if (args.length < 3 || args.length > 5) {
-            await MessageSender.reply(msgId, "**Invalid arguments!**", token, channel_id);
+            await MessageSender.reply(data.id, "**Invalid arguments!**", token, data.channel_id);
             return false;
         }
 
@@ -25,7 +25,7 @@ class ShipCommand extends Command {
             id2 = args[2].match(/\d+/)[0];
         }
         catch (TypeError) {
-            await MessageSender.reply(msgId, "**Invalid arguments!**", token, channel_id);
+            await MessageSender.reply(data.id, "**Invalid arguments!**", token, data.channel_id);
             return false;
         }
 
@@ -49,7 +49,7 @@ class ShipCommand extends Command {
             relation = "Horrible! :broken_heart:";
         }
 
-        await MessageSender.reply(msgId, `**${result}%** ${relation}`, token, channel_id);
+        await MessageSender.reply(data.id, `**${result}%** ${relation}`, token, data.channel_id);
 
         return true;
 

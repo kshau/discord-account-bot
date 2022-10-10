@@ -11,13 +11,13 @@ class QuoteCommand extends Command {
 
     static description = "Tells a random inspirational quote"
 
-    static async call(args, msgId, sender, token, channel_id) {
+    static async call(args, data, token) {
 
         var quoteRes = await fetch("https://zenquotes.io/api/random");
         var quoteJSON = await quoteRes.json();
 
         var {q, a} = quoteJSON[0];
-        await MessageSender.reply(msgId, `${q}\n\n**~ ${a}**`, token, channel_id);
+        await MessageSender.reply(data.id, `${q}\n\n**~ ${a}**`, token, data.channel_id);
 
         return true;
 
