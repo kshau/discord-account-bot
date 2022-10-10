@@ -6,13 +6,14 @@ class SayCommand extends Command {
     static command = "!kshsay";
 
     static cooldownMs = 10000;
+    static cooldownIds = [];
 
     static description = "Quotes something someone said | __<text>__"
 
     static async call(args, msgId, sender, token, channel_id) {
 
         if (args.length < 2) {
-            await MessageSender.send("**Invalid arguments!**", token, channel_id);
+            await MessageSender.reply(msgId, "**Invalid arguments!**", token, channel_id);
             return false;
         }
 

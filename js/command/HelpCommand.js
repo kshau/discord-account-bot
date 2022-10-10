@@ -11,6 +11,7 @@ class HelpCommand extends Command {
     static command = "!kshhelp";
 
     static cooldownMs = 30000;
+    static cooldownIds = [];
 
     static description = "Shows this!"
 

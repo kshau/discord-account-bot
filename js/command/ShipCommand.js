@@ -6,6 +6,7 @@ class ShipCommand extends Command {
     static command = "!kshship";
 
     static cooldownMs = 3000;
+    static cooldownIds = [];
 
     static description = "Matchmakes two people | __<mention> <mention>__"
 

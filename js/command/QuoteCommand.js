@@ -7,6 +7,7 @@ class QuoteCommand extends Command {
     static command = "!kshquote";
 
     static cooldownMs = 15000;
+    static cooldownIds = [];
 
     static description = "Tells a random inspirational quote"
 

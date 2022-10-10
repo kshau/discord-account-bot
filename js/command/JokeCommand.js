@@ -7,6 +7,7 @@ class JokeCommand extends Command {
     static command = "!kshjoke";
 
     static cooldownMs = 5000;
+    static cooldownIds = [];
 
     static description = "Tells a random Joke";
 

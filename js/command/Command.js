@@ -5,7 +5,7 @@ class Command {
     static command = null;
 
     static cooldownMs = null;
-    static cooldownIds = [];
+    static cooldownIds = null;
 
     static description = null;
 
