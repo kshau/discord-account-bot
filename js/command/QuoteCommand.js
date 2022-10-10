@@ -9,7 +9,7 @@ class QuoteCommand extends Command {
     static cooldownMs = 15000;
     static cooldownIds = [];
 
-    static description = "Tells a random inspirational quote"
+    static description = "Tells a random inspirational quote :speech_balloon:"
 
     static async call(args, data, token) {
 

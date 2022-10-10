@@ -6,13 +6,17 @@ const {ShipCommand} = require("./js/command/ShipCommand");
 const {JokeCommand} = require("./js/command/JokeCommand");
 const {QuoteCommand} = require("./js/command/QuoteCommand");
 const { HelpCommand } = require("./js/command/HelpCommand");
+const { FlipCommand } = require("./js/command/FlipCommand");
+const { RollCommand } = require("./js/command/RollCommand");
 
 DotEnv.config();
 
 const TOKEN = process.env.TOKEN;
 
 const REGISTERED_CMDS = [
+    FlipCommand, 
     HelpCommand,
+    RollCommand, 
     SayCommand, 
     ShipCommand, 
     JokeCommand, 

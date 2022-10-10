@@ -8,11 +8,11 @@ class ShipCommand extends Command {
     static cooldownMs = 3000;
     static cooldownIds = [];
 
-    static description = "Matchmakes two people | __<mention> <mention>__"
+    static description = "Matchmakes two people :heartpulse: | __<mention> <mention>__"
 
     static async call(args, data, token) {
 
-        if (args.length < 3 || args.length > 5) {
+        if (args.length < 2 || args.length > 4) {
             await MessageSender.reply(data.id, "**Invalid arguments!**", token, data.channel_id);
             return false;
         }
@@ -21,8 +21,8 @@ class ShipCommand extends Command {
         var id2;
 
         try {
-            id1 = args[1].match(/\d+/)[0];
-            id2 = args[2].match(/\d+/)[0];
+            id1 = args[0].match(/\d+/)[0];
+            id2 = args[1].match(/\d+/)[0];
         }
         catch (TypeError) {
             await MessageSender.reply(data.id, "**Invalid arguments!**", token, data.channel_id);

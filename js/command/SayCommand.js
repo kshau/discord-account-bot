@@ -8,7 +8,7 @@ class SayCommand extends Command {
     static cooldownMs = 10000;
     static cooldownIds = [];
 
-    static description = "Quotes something someone said | __<text>__"
+    static description = "Quotes something someone said :lips: | __<text>__"
 
     static async call(args, data, token) {
 
@@ -18,7 +18,7 @@ class SayCommand extends Command {
         }
 
         var msg = "";
-        for (var i = 1; i <= args.length - 1; i++) {
+        for (var i = 0; i <= args.length - 1; i++) {
             msg += args[i];
             if (i != args.length - 1) {
                 msg += " ";

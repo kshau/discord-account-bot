@@ -1,4 +1,5 @@
 const {MessageSender} = require("../MessageSender");
+const {Logger} = require("../Logger");
 
 class Command {
 
@@ -19,10 +20,12 @@ class Command {
 
             else {
 
-                var args = data.content.replace(/ +(?= )/g,'').split(" ");
+                var args = data.content.replace(/ +(?= )/g,'').split(" ").splice(1);
 
                 this.call(args, data, token).then();
                 this.cooldownIds.push(data.author.id);
+
+                Logger.log(`${data.author.username}#${data.author.discriminator} (${data.author.id}) used ${this.command} with args {${args}}.`);
 
                 setTimeout(() => {
                     this.cooldownIds.splice(this.cooldownIds.indexOf(data.author.id), 1);
