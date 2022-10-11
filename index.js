@@ -14,8 +14,6 @@ DotEnv.config();
 const TOKEN = process.env.TOKEN;
 const COMMAND_PREFIX = process.env.COMMAND_PREFIX;
 
-console.log(COMMAND_PREFIX);
-
 const REGISTERED_CMDS = [
     FlipCommand, 
     HelpCommand,

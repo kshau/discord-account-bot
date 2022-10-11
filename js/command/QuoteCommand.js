@@ -11,15 +11,25 @@ class QuoteCommand extends Command {
 
     static description = "Tells a random inspirational quote :speech_balloon:"
 
-    static async call(args, data, token) {
+    static async getQuoteJSON() {
 
         var quoteRes = await fetch("https://zenquotes.io/api/random");
         var quoteJSON = await quoteRes.json();
 
-        var {q, a} = quoteJSON[0];
-        await MessageSender.reply(data.id, `${q}\n\n**~ ${a}**`, token, data.channel_id);
+        return quoteJSON[0];
 
-        return true;
+    }
+
+    static call(args, data, token) {
+
+        this.getQuoteJSON()
+
+            .then(json => {
+
+                var {q, a} = json;
+                MessageSender.reply(data.id, `${q}\n\n**~ ${a}**`, token, data.channel_id);
+                
+            });
 
     }
 

@@ -10,7 +10,7 @@ class FlipCommand extends Command {
 
     static description = "Flips a coin :coin:";
 
-    static async call(args, data, token) {
+    static call(args, data, token) {
 
         var result = Math.round(Math.random());
 
@@ -21,8 +21,6 @@ class FlipCommand extends Command {
         else {
             MessageSender.reply(data.id, "**Tails!** :coin:", token, data.channel_id);
         }
-
-        return true;
 
     }
 

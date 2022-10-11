@@ -17,7 +17,7 @@ class HelpCommand extends Command {
 
     static description = "Shows this! :smiley:"
 
-    static async call(args, data, token) {
+    static call(args, data, token) {
 
         const CMDS = [
             HelpCommand,
@@ -36,8 +36,6 @@ class HelpCommand extends Command {
         });
 
         MessageSender.send(msg, token, data.channel_id);
-
-        return true;
 
     }
 

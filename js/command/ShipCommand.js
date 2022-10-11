@@ -1,5 +1,6 @@
 const {Command} = require("./Command");
 const {MessageSender} = require("../MessageSender");
+const { ArgumentError } = require("./error/ArgumentError");
 
 class ShipCommand extends Command {
 
@@ -10,11 +11,10 @@ class ShipCommand extends Command {
 
     static description = "Matchmakes two people :heartpulse: | __<mention> <mention>__"
 
-    static async call(args, data, token) {
+    static call(args, data, token) {
 
         if (args.length < 2 || args.length > 4) {
-            await MessageSender.reply(data.id, "**Invalid arguments!**", token, data.channel_id);
-            return false;
+            throw new ArgumentError("The arguments provided were invalid!");
         }
 
         var id1;
@@ -25,8 +25,7 @@ class ShipCommand extends Command {
             id2 = args[1].match(/\d+/)[0];
         }
         catch (TypeError) {
-            await MessageSender.reply(data.id, "**Invalid arguments!**", token, data.channel_id);
-            return false;
+            throw new ArgumentError("The arguments provided were invalid!");
         }
 
         var result = Math.abs(Math.round(Math.cos(id1 + id2) * 100));
@@ -49,7 +48,7 @@ class ShipCommand extends Command {
             relation = "Horrible! :broken_heart:";
         }
 
-        await MessageSender.reply(data.id, `**${result}%** ${relation}`, token, data.channel_id);
+        MessageSender.reply(data.id, `**${result}%** ${relation}`, token, data.channel_id);
 
         return true;
 

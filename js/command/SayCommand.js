@@ -1,5 +1,6 @@
 const {Command} = require("./Command");
 const {MessageSender} = require("../MessageSender");
+const { ArgumentError } = require("./error/ArgumentError");
 
 class SayCommand extends Command {
 
@@ -10,11 +11,10 @@ class SayCommand extends Command {
 
     static description = "Quotes something someone said :lips: | __<text>__"
 
-    static async call(args, data, token) {
+    static call(args, data, token) {
 
         if (args.length < 2) {
-            await MessageSender.reply(data.id, "**Invalid arguments!**", token, data.channel_id);
-            return false;
+            throw new ArgumentError("The arguments provided were invalid!");
         }
 
         var msg = "";
@@ -25,9 +25,7 @@ class SayCommand extends Command {
             }
         }
 
-        await MessageSender.send(`"${msg}" **~ ${data.author.username}#${data.author.discriminator}**`, token, data.channel_id);
-
-        return true;
+        MessageSender.send(`"${msg}" **~ ${data.author.username}#${data.author.discriminator}**`, token, data.channel_id);
 
     }
 

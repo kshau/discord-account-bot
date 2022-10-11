@@ -11,15 +11,25 @@ class JokeCommand extends Command {
 
     static description = "Tells a random joke :rofl:";
 
-    static async call(args, data, token) {
+    static async getJokeJSON() {
 
         var jokeRes = await fetch("https://official-joke-api.appspot.com/random_joke");
         var jokeJSON = await jokeRes.json();
 
-        var {setup, punchline} = jokeJSON;
-        await MessageSender.reply(data.id, `${setup}\n||${punchline}||`, token, data.channel_id);
+        return jokeJSON;
 
-        return true;
+    }
+
+    static call(args, data, token) {
+
+        this.getJokeJSON()
+
+            .then(json => {
+
+                var {setup, punchline} = json;
+                MessageSender.reply(data.id, `${setup}\n||${punchline}||`, token, data.channel_id);
+
+            })
 
     }
 
