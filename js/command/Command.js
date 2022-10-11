@@ -20,7 +20,7 @@ class Command {
         if (data.content.toLowerCase().replace(COMMAND_PREFIX, "").startsWith(this.command)) {
 
             if (this.cooldownIds.includes(data.author.id)) {
-                MessageSender.send(`**That command has a ${this.cooldownMs / 1000} second cooldown!**`, token, data.channel_id);
+                MessageSender.send(`**That command has a ${this.cooldownMs / 1000} second cooldown!** :watch:`, token, data.channel_id);
             }
 
             else {
