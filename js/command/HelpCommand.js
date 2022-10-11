@@ -10,7 +10,7 @@ const { RollCommand } = require("./RollCommand");
 
 class HelpCommand extends Command {
 
-    static command = "!kshhelp";
+    static command = "help";
 
     static cooldownMs = 30000;
     static cooldownIds = [];
@@ -32,7 +32,7 @@ class HelpCommand extends Command {
         var msg = ">>> **:dizzy: kshaurya731 :dizzy:**\n══════════════════";
 
         CMDS.forEach(c => {
-            msg += "\n:arrow_right: **" + c.command + "** - " + c.description;
+            msg += "\n:arrow_right: ** " + "$" + c.command + "** - " + c.description;
         });
 
         MessageSender.send(msg, token, data.channel_id);

@@ -4,7 +4,7 @@ const {fetch} = require("undici");
 
 class QuoteCommand extends Command {
 
-    static command = "!kshquote";
+    static command = "quote";
 
     static cooldownMs = 15000;
     static cooldownIds = [];

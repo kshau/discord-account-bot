@@ -3,7 +3,7 @@ const {MessageSender} = require("../MessageSender");
 
 class RollCommand extends Command {
 
-    static command = "!kshroll";
+    static command = "roll";
 
     static cooldownMs = 3000;
     static cooldownIds = [];

@@ -3,7 +3,7 @@ const {MessageSender} = require("../MessageSender");
 
 class SayCommand extends Command {
 
-    static command = "!kshsay";
+    static command = "say";
 
     static cooldownMs = 10000;
     static cooldownIds = [];

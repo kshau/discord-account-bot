@@ -12,6 +12,9 @@ const { RollCommand } = require("./js/command/RollCommand");
 DotEnv.config();
 
 const TOKEN = process.env.TOKEN;
+const COMMAND_PREFIX = process.env.COMMAND_PREFIX;
+
+console.log(COMMAND_PREFIX);
 
 const REGISTERED_CMDS = [
     FlipCommand, 
@@ -63,10 +66,15 @@ function wsConnect() {
         switch (t) {
 
             case "MESSAGE_CREATE":
-                
-                REGISTERED_CMDS.forEach(c => {
-                    c.listen(d, TOKEN);
-                })
+
+                if (d.content.startsWith(COMMAND_PREFIX)) {
+
+                    REGISTERED_CMDS.forEach(c => {
+                        c.listen(d, TOKEN);
+                    })
+
+                }
+
                 break;
 
         }

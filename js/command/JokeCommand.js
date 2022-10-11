@@ -4,7 +4,7 @@ const {fetch} = require("undici");
 
 class JokeCommand extends Command {
 
-    static command = "!kshjoke";
+    static command = "joke";
 
     static cooldownMs = 5000;
     static cooldownIds = [];

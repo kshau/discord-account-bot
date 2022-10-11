@@ -3,7 +3,7 @@ const {MessageSender} = require("../MessageSender");
 
 class FlipCommand extends Command {
 
-    static command = "!kshflip";
+    static command = "flip";
 
     static cooldownMs = 3000;
     static cooldownIds = [];

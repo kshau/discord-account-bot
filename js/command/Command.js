@@ -1,5 +1,10 @@
 const {MessageSender} = require("../MessageSender");
 const {Logger} = require("../Logger");
+const DotEnv = require("dotenv");
+
+DotEnv.config();
+
+const COMMAND_PREFIX = process.env.COMMAND_PREFIX;
 
 class Command {
 
@@ -12,7 +17,7 @@ class Command {
 
     static listen(data, token) {
 
-        if (data.content.toLowerCase().startsWith(this.command)) {
+        if (data.content.toLowerCase().replace(COMMAND_PREFIX, "").startsWith(this.command)) {
 
             if (this.cooldownIds.includes(data.author.id)) {
                 MessageSender.send(`**That command has a ${this.cooldownMs / 1000} second cooldown!**`, token, data.channel_id);

@@ -3,7 +3,7 @@ const {MessageSender} = require("../MessageSender");
 
 class ShipCommand extends Command {
 
-    static command = "!kshship";
+    static command = "ship";
 
     static cooldownMs = 3000;
     static cooldownIds = [];
