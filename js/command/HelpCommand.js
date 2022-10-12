@@ -7,6 +7,7 @@ const {JokeCommand} = require("./JokeCommand");
 const {QuoteCommand} = require("./QuoteCommand");
 const { FlipCommand } = require("./FlipCommand");
 const { RollCommand } = require("./RollCommand");
+const { FactCommand } = require("./FactCommand");
 
 class HelpCommand extends Command {
 
@@ -21,6 +22,7 @@ class HelpCommand extends Command {
 
         const CMDS = [
             HelpCommand,
+            FactCommand,
             FlipCommand, 
             RollCommand,
             SayCommand, 

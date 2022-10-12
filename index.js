@@ -8,13 +8,15 @@ const {QuoteCommand} = require("./js/command/QuoteCommand");
 const { HelpCommand } = require("./js/command/HelpCommand");
 const { FlipCommand } = require("./js/command/FlipCommand");
 const { RollCommand } = require("./js/command/RollCommand");
+const { FactCommand } = require("./js/command/FactCommand");
 
-DotEnv.config();
+const EnvVariables = require("./js/EnvVariables");
 
 const TOKEN = process.env.TOKEN;
 const COMMAND_PREFIX = process.env.COMMAND_PREFIX;
 
 const REGISTERED_CMDS = [
+    FactCommand,
     FlipCommand, 
     HelpCommand,
     RollCommand, 
