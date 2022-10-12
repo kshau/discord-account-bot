@@ -60,9 +60,7 @@ class Command {
                 }
 
                 else {
-
                     Logger.log(err);
-
                 }
 
             }

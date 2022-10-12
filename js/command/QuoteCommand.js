@@ -29,7 +29,7 @@ class QuoteCommand extends Command {
                 var {q, a} = json;
                 MessageSender.reply(data.id, `${q}\n\n**~ ${a}**`, token, data.channel_id);
                 
-            });
+            })
 
     }
 

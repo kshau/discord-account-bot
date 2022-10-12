@@ -13,7 +13,7 @@ class SayCommand extends Command {
 
     static call(args, data, token) {
 
-        if (args.length < 2) {
+        if (args.length < 1) {
             throw new ArgumentError("The arguments provided were invalid!");
         }
 
