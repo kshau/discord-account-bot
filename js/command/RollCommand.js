@@ -15,7 +15,7 @@ class RollCommand extends Command {
         
         var sides = (args[0] == undefined) ? (6) : (args[0]);
 
-        if (isNaN(sides)) {
+        if (sides > 64000000 || isNaN(sides)) {
             throw new ArgumentError("The arguments provided were invalid!");
         }
 
