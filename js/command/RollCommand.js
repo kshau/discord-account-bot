@@ -13,11 +13,12 @@ class RollCommand extends Command {
 
     static call(args, data, token) {
 
-        if (isNaN(args[0])) {
+        var sides = (args[0] == undefined) ? (6) : (args[0]);
+
+        if (isNaN(sides)) {
             throw new ArgumentError("The arguments provided were invalid!");
         }
 
-        var sides = (args[0] == undefined) ? (6) : (args[0]);
         var result = Math.round(Math.random() * (sides - 1)) + 1;
         
         MessageSender.reply(data.id, `**${result}!** :game_die:`, token, data.channel_id);
