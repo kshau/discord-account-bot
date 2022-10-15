@@ -11,11 +11,13 @@ const { RollCommand } = require("./js/command/RollCommand");
 const { FactCommand } = require("./js/command/FactCommand");
 
 const EnvVariables = require("./js/EnvVariables");
+const { DogCommand } = require("./js/command/DogCommand");
 
 const TOKEN = process.env.TOKEN;
 const COMMAND_PREFIX = process.env.COMMAND_PREFIX;
 
 const REGISTERED_CMDS = [
+    DogCommand, 
     FactCommand,
     FlipCommand, 
     HelpCommand,

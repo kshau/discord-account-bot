@@ -35,7 +35,7 @@ class Command {
                     this.call(args, data, token);
                     this.cooldownIds.push(data.author.id);
 
-                    Logger.log(`${data.author.username}#${data.author.discriminator} (${data.author.id}) used $${this.command} with args {${args}}.`);
+                    Logger.log(`${data.author.username}#${data.author.discriminator} (${data.author.id}) used $${this.command} with args {${args}} in channel ${data.channel_id}.`);
 
                     setTimeout(() => {
                         this.cooldownIds.splice(this.cooldownIds.indexOf(data.author.id), 1);
