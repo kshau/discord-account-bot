@@ -36,6 +36,10 @@ class DogCommand extends Command {
             breed += args[i];
         }
 
+        if (breed == "") {
+            breed = undefined;
+        }
+
         this.getDogJSON(breed)
 
             .then(json => {
