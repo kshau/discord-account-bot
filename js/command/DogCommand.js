@@ -1,6 +1,7 @@
 const {Command} = require("./Command");
 const {MessageSender} = require("../MessageSender");
 const {fetch} = require("undici");
+const { ArgumentError } = require("./error/ArgumentError");
 
 class DogCommand extends Command {
 
@@ -9,11 +10,20 @@ class DogCommand extends Command {
     static cooldownMs = 5000;
     static cooldownIds = [];
 
-    static description = "Shows a random dog photo :dog:";
+    static description = "Shows a random dog photo :dog: | __<breed?>__";
 
-    static async getDogJSON() {
+    static async getDogJSON(breed) {
 
-        var dogRes = await fetch("https://dog.ceo/api/breeds/image/random");
+        var dogRes;
+
+        if (breed == undefined) {
+            dogRes = await fetch("https://dog.ceo/api/breeds/image/random");
+        }
+
+        else {
+            dogRes = await fetch(`https://dog.ceo/api/breed/${breed}/images/random`);
+        }
+
         var dogJSON = await dogRes.json();
 
         return dogJSON;
@@ -22,12 +32,24 @@ class DogCommand extends Command {
 
     static call(args, data, token) {
 
-        this.getDogJSON()
+        var breed = "";
+        for (var i = 0; i <= args.length - 1; i++) {
+            breed += args[i];
+        }
+
+        this.getDogJSON(breed)
 
             .then(json => {
 
-                var {message} = json;
-                MessageSender.reply(data.id, message, token, data.channel_id);
+                var {message, status} = json;
+
+                if (status == "success") {
+                    MessageSender.reply(data.id, message, token, data.channel_id);
+                }
+
+                else {
+                    MessageSender.reply(data.id, "**I don't recognize that dog breed!** :dog: :x:", token, data.channel_id);
+                }
 
             })
 
