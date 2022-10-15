@@ -1,7 +1,6 @@
 const {Command} = require("./Command");
 const {MessageSender} = require("../MessageSender");
 const {fetch} = require("undici");
-const { ArgumentError } = require("./error/ArgumentError");
 
 class DogCommand extends Command {
 
