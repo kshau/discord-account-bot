@@ -38,6 +38,10 @@ class CovidCommand extends Command {
                             region = "unitedstates";
                             break;
 
+                        case "usa":
+                            region = "unitedstates";
+                            break;
+
                         case "uk":
                             region = "unitedkingdom";
                             break;
