@@ -41,7 +41,10 @@ class Command {
                 Logger.log(`${data.author.username}#${data.author.discriminator} (${data.author.id}) used $${this.command} with args {${args}} in channel ${data.channel_id}.`);
 
                 setTimeout(() => {
-                    this.cooldowns.splice(this.cooldowns.indexOf(data.author.id), 1);
+                    this.cooldowns.splice(this.cooldowns.indexOf({
+                        "userId": data.author.id, 
+                        "channelId": data.channel_id
+                    }), 1);
                 }, this.cooldownMs)
 
             }
@@ -56,7 +59,7 @@ class Command {
 
                 else if (err instanceof CooldownError) {
 
-                    MessageSender.reply(`**That command has a ${this.cooldownMs / 1000} second cooldown!** :watch:`, token, data.channel_id);
+                    MessageSender.reply(data.id, `**That command has a ${this.cooldownMs / 1000} second cooldown!** :watch:`, token, data.channel_id);
 
                 }
 

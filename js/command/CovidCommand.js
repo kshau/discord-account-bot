@@ -27,7 +27,32 @@ class CovidCommand extends Command {
             .then(json => {
 
                 var region = this.getStitchedArguments(args);
-                var regionData;
+                var covidData;
+                var regionText;
+
+                if (region != undefined) {
+
+                    switch (region.toLowerCase()) {
+
+                        case "us":
+                            region = "unitedstates";
+                            break;
+
+                        case "uk":
+                            region = "unitedkingdom";
+                            break;
+
+                        case "ca":
+                            region = "canada";
+                            break;  
+
+                        case "ind":
+                            region = "india";
+                            break;
+
+                    }
+
+                }
 
                 var {Message, Global, Countries} = json;
 
@@ -36,27 +61,37 @@ class CovidCommand extends Command {
                 }
 
                 else if (region == undefined) {
-                    regionData = Global;
+                    covidData = Global;
+                    regionText = "Worldwide :globe_with_meridians:";
                 }
 
                 else {
 
                     Countries.forEach(c => {
                         if (c.Slug.toLowerCase().replace(/-/g,"") == region.toLowerCase()) {
-                            regionData = c;
+                            covidData = c;
+                            regionText = `${covidData.Country} :flag_${covidData.CountryCode.toLowerCase()}:`;
                         }
                     })
 
+                    if (covidData == undefined) {
+                        MessageSender.reply(data.id, "**I don't recognize that region!** :earth_americas: :x:", token, data.channel_id);
+                    }
+
                 }
 
-                var text = `**Region: **${regionData.Country} :flag_${regionData.CountryCode.toLowerCase()}:\n
-**New Confirmed: **${regionData.NewConfirmed.toLocaleString("en-US")} :sneeze:
-**Total Confirmed: **${regionData.TotalConfirmed.toLocaleString("en-US")} :sneeze:\n
-**New Deaths: **${regionData.NewDeaths.toLocaleString("en-US")} :dizzy_face:
-**Total Deaths: **${regionData.TotalDeaths.toLocaleString("en-US")} :dizzy_face:
-                `
+                if (covidData != undefined) {
 
-                MessageSender.reply(data.id, text, token, data.channel_id);
+                    var text = `**Region: **${regionText}\n
+**New Confirmed: **${covidData.NewConfirmed.toLocaleString("en-US")} :sneeze:
+**Total Confirmed: **${covidData.TotalConfirmed.toLocaleString("en-US")} :sneeze:\n
+**New Deaths: **${covidData.NewDeaths.toLocaleString("en-US")} :dizzy_face:
+**Total Deaths: **${covidData.TotalDeaths.toLocaleString("en-US")} :dizzy_face:
+                    `
+
+                    MessageSender.reply(data.id, text, token, data.channel_id);
+
+                }
 
             })
 
