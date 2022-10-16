@@ -57,7 +57,7 @@ class CovidCommand extends Command {
                 var {Message, Global, Countries} = json;
 
                 if (Message == "Caching in progress") {
-                    MessageSender.reply(data.id, "Currently collecting data! Please try that command in a few more seconds! :x:", token, data.channel_id);
+                    MessageSender.reply(data.id, "**Currently collecting data! Please try that command in a few more seconds!** :x:", token, data.channel_id);
                 }
 
                 else if (region == undefined) {
