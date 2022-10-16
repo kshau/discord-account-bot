@@ -6,7 +6,7 @@ class CovidCommand extends Command {
 
     static command = "covid";
 
-    static cooldownMs = 15000;
+    static cooldownMs = 7000;
     static cooldowns = [];
 
     static description = "Shows COVID-19 stats :mask: | __<country?>__";
