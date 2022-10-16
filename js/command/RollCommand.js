@@ -7,7 +7,7 @@ class RollCommand extends Command {
     static command = "roll";
 
     static cooldownMs = 3000;
-    static cooldownIds = [];
+    static cooldowns = [];
 
     static description = "Rolls a die :game_die: | __<sides?>__";
 

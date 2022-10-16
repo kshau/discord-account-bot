@@ -14,7 +14,7 @@ class Command {
     static command = null;
 
     static cooldownMs = null;
-    static cooldownIds = null;
+    static cooldowns = null;
 
     static description = null;
 
@@ -24,24 +24,25 @@ class Command {
 
             try {
 
-                if (this.cooldownIds.includes(data.author.id)) {
-                    throw new CooldownError("The command was used when it was still on cooldown!");
-                }
+                this.cooldowns.forEach(c => {
+                    if (c.userId == data.author.id && c.channelId == data.channel_id) {
+                        throw new CooldownError("The command was used when it was still on cooldown!");
+                    }
+                })
 
-                else {
+                var args = data.content.replace(/ +(?= )/g,'').split(" ").splice(1);
 
-                    var args = data.content.replace(/ +(?= )/g,'').split(" ").splice(1);
+                this.call(args, data, token);
+                this.cooldowns.push({
+                    "userId": data.author.id, 
+                    "channelId": data.channel_id
+                });
 
-                    this.call(args, data, token);
-                    this.cooldownIds.push(data.author.id);
+                Logger.log(`${data.author.username}#${data.author.discriminator} (${data.author.id}) used $${this.command} with args {${args}} in channel ${data.channel_id}.`);
 
-                    Logger.log(`${data.author.username}#${data.author.discriminator} (${data.author.id}) used $${this.command} with args {${args}} in channel ${data.channel_id}.`);
-
-                    setTimeout(() => {
-                        this.cooldownIds.splice(this.cooldownIds.indexOf(data.author.id), 1);
-                    }, this.cooldownMs)
-
-                }
+                setTimeout(() => {
+                    this.cooldowns.splice(this.cooldowns.indexOf(data.author.id), 1);
+                }, this.cooldownMs)
 
             }
 
@@ -66,6 +67,22 @@ class Command {
             }
 
         }
+
+    }
+
+    static getStitchedArguments(args) {
+
+        var argsStitched = "";
+
+        for (var i = 0; i <= args.length - 1; i++) {
+            argsStitched += args[i];
+        }
+
+        if (argsStitched == "") {
+            argsStitched = undefined;
+        }
+
+        return argsStitched;
 
     }
 

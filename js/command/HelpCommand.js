@@ -10,13 +10,14 @@ const { RollCommand } = require("./RollCommand");
 const { FactCommand } = require("./FactCommand");
 const { DogCommand } = require("./DogCommand");
 const { CatCommand } = require("./CatCommand");
+const { CovidCommand } = require("./CovidCommand");
 
 class HelpCommand extends Command {
 
     static command = "help";
 
     static cooldownMs = 30000;
-    static cooldownIds = [];
+    static cooldowns = [];
 
     static description = "Shows this! :smiley:"
 
@@ -25,6 +26,7 @@ class HelpCommand extends Command {
         const CMDS = [
             HelpCommand,
             CatCommand, 
+            CovidCommand, 
             DogCommand, 
             FactCommand,
             FlipCommand, 

@@ -7,7 +7,7 @@ class ShipCommand extends Command {
     static command = "ship";
 
     static cooldownMs = 3000;
-    static cooldownIds = [];
+    static cooldowns = [];
 
     static description = "Matchmakes two people :heartpulse: | __<mention> <mention>__"
 

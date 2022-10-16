@@ -7,7 +7,7 @@ class QuoteCommand extends Command {
     static command = "quote";
 
     static cooldownMs = 15000;
-    static cooldownIds = [];
+    static cooldowns = [];
 
     static description = "Tells a random inspirational quote :speech_balloon:"
 

@@ -7,7 +7,7 @@ class DogCommand extends Command {
     static command = "dog";
 
     static cooldownMs = 5000;
-    static cooldownIds = [];
+    static cooldowns = [];
 
     static description = "Shows a random dog photo :dog: | __<breed?>__";
 
@@ -31,14 +31,7 @@ class DogCommand extends Command {
 
     static call(args, data, token) {
 
-        var breed = "";
-        for (var i = 0; i <= args.length - 1; i++) {
-            breed += args[i];
-        }
-
-        if (breed == "") {
-            breed = undefined;
-        }
+        var breed = this.getStitchedArguments(args);
 
         this.getDogJSON(breed)
 

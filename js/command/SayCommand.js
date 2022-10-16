@@ -7,7 +7,7 @@ class SayCommand extends Command {
     static command = "say";
 
     static cooldownMs = 10000;
-    static cooldownIds = [];
+    static cooldowns = [];
 
     static description = "Quotes something someone said :lips: | __<text>__"
 

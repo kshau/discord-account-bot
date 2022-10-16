@@ -6,7 +6,7 @@ class FlipCommand extends Command {
     static command = "flip";
 
     static cooldownMs = 3000;
-    static cooldownIds = [];
+    static cooldowns = [];
 
     static description = "Flips a coin :coin:";
 

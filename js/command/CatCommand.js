@@ -7,7 +7,7 @@ class CatCommand extends Command {
     static command = "cat";
 
     static cooldownMs = 5000;
-    static cooldownIds = [];
+    static cooldowns = [];
 
     static description = "Shows a random cat photo :cat:";
 
