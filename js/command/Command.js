@@ -56,7 +56,7 @@ class Command {
 
                 else if (err instanceof CooldownError) {
 
-                    MessageSender.send(`**That command has a ${this.cooldownMs / 1000} second cooldown!** :watch:`, token, data.channel_id);
+                    MessageSender.reply(`**That command has a ${this.cooldownMs / 1000} second cooldown!** :watch:`, token, data.channel_id);
 
                 }
 
