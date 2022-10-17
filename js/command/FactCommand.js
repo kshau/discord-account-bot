@@ -10,7 +10,7 @@ class FactCommand extends Command {
 
     static command = "fact";
 
-    static cooldownMs = 5000;
+    static cooldownMs = 3000;
     static cooldowns = [];
 
     static description = "Tells a random fun fact :astonished:";

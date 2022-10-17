@@ -6,7 +6,7 @@ class DogCommand extends Command {
 
     static command = "dog";
 
-    static cooldownMs = 5000;
+    static cooldownMs = 3000;
     static cooldowns = [];
 
     static description = "Shows a random dog photo :dog: | __<breed?>__";
