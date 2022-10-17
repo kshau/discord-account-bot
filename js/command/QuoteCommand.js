@@ -27,7 +27,7 @@ class QuoteCommand extends Command {
             .then(json => {
 
                 var {q, a} = json;
-                MessageSender.reply(data.id, `${q}\n\n**~ ${a}**`, token, data.channel_id);
+                MessageSender.reply(data.id, `**${q}**\n\n~ ${a}`, token, data.channel_id);
                 
             })
 

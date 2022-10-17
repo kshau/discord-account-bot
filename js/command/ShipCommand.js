@@ -13,7 +13,7 @@ class ShipCommand extends Command {
 
     static call(args, data, token) {
 
-        if (args.length < 2 || args.length > 4) {
+        if (args.length < 2) {
             throw new ArgumentError("The arguments provided were invalid!");
         }
 
@@ -49,8 +49,6 @@ class ShipCommand extends Command {
         }
 
         MessageSender.reply(data.id, `**${result}%** ${relation}`, token, data.channel_id);
-
-        return true;
 
     }
 

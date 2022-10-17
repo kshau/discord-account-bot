@@ -25,7 +25,7 @@ class SayCommand extends Command {
             }
         }
 
-        MessageSender.send(`"${msg}" **~ ${data.author.username}#${data.author.discriminator}**`, token, data.channel_id);
+        MessageSender.send(`**"${msg}"** ~ ${data.author.username}#${data.author.discriminator}`, token, data.channel_id);
 
     }
 
