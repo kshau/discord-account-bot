@@ -27,7 +27,7 @@ class JokeCommand extends Command {
             .then(json => {
 
                 var {setup, punchline} = json;
-                MessageSender.reply(data.id, `${setup}\n||${punchline}||`, token, data.channel_id);
+                MessageSender.reply(data.id, `${setup}\n||**${punchline}**||`, token, data.channel_id);
 
             })
 

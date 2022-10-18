@@ -20,7 +20,7 @@ class DogCommand extends Command {
         }
 
         else {
-            dogRes = await fetch(`https://dog.ceo/api/breed/${breed}/images/random`);
+            dogRes = await fetch(`https://dog.ceo/api/breed/${breed.toLowerCase()}/images/random`);
         }
 
         var dogJSON = await dogRes.json();

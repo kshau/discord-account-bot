@@ -2,8 +2,6 @@ const {Command} = require("./Command");
 const {MessageSender} = require("../MessageSender");
 const {fetch} = require("undici");
 
-const EnvVariables = require("../EnvVariables");
-
 const NINJAS_API_KEY = process.env.NINJAS_API_KEY;
 
 class FactCommand extends Command {

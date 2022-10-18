@@ -1,11 +1,9 @@
 const {MessageSender} = require("../MessageSender");
 const {Logger} = require("../Logger");
+const {fetch} = require("undici");
 
-const DotEnv = require("dotenv");
 const { ArgumentError } = require("./error/ArgumentError");
 const { CooldownError } = require("./error/CooldownError");
-
-DotEnv.config();
 
 const COMMAND_PREFIX = process.env.COMMAND_PREFIX;
 
@@ -20,7 +18,7 @@ class Command {
 
     static listen(data, token) {
 
-        if (data.content.toLowerCase().replace(COMMAND_PREFIX, "").startsWith(this.command)) {
+        if (data.content.toLowerCase().replace(COMMAND_PREFIX, "").split(" ")[0] == this.command) {
 
             try {
 
@@ -88,7 +86,7 @@ class Command {
         return argsStitched;
 
     }
-
+    
 }
 
 module.exports = {Command};

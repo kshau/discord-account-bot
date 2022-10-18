@@ -1,5 +1,7 @@
 const WebSocket = require("ws");
+
 const DotEnv = require("dotenv");
+DotEnv.config();
 
 const {SayCommand} = require("./js/command/SayCommand");
 const {ShipCommand} = require("./js/command/ShipCommand");
@@ -9,12 +11,9 @@ const { HelpCommand } = require("./js/command/HelpCommand");
 const { FlipCommand } = require("./js/command/FlipCommand");
 const { RollCommand } = require("./js/command/RollCommand");
 const { FactCommand } = require("./js/command/FactCommand");
-
-const EnvVariables = require("./js/EnvVariables");
 const { DogCommand } = require("./js/command/DogCommand");
 const { CatCommand } = require("./js/command/CatCommand");
 const { CovidCommand } = require("./js/command/CovidCommand");
-const { InsultCommand } = require("./js/command/InsultCommand");
 
 const TOKEN = process.env.TOKEN;
 const COMMAND_PREFIX = process.env.COMMAND_PREFIX;
@@ -26,7 +25,6 @@ const REGISTERED_CMDS = [
     FactCommand,
     FlipCommand, 
     HelpCommand,
-    InsultCommand, 
     RollCommand, 
     SayCommand, 
     ShipCommand, 
