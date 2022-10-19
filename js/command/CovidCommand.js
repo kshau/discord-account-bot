@@ -26,7 +26,7 @@ class CovidCommand extends Command {
 
             .then(json => {
 
-                var region = this.getStitchedArguments(args);
+                var region = this.getStitchedArguments(args, 0);
                 var covidData;
                 var regionText;
 

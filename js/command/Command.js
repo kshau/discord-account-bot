@@ -71,11 +71,11 @@ class Command {
 
     }
 
-    static getStitchedArguments(args) {
+    static getStitchedArguments(args, startIdx) {
 
         var argsStitched = "";
 
-        for (var i = 0; i <= args.length - 1; i++) {
+        for (var i = startIdx; i <= args.length - 1; i++) {
             argsStitched += args[i];
         }
 

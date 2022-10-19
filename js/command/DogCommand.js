@@ -31,7 +31,7 @@ class DogCommand extends Command {
 
     static call(args, data, token) {
 
-        var breed = this.getStitchedArguments(args);
+        var breed = this.getStitchedArguments(args, 0);
 
         this.getDogJSON(breed)
 
