@@ -13,10 +13,10 @@ class MemeCommand extends Command {
 
     static async getMemeJSON() {
 
-        var memeRes = await fetch("https://meme-api.herokuapp.com/gimme");
         var memeJSON;
 
         while (memeJSON == undefined || memeJSON.nsfw == true) {
+            var memeRes = await fetch("https://meme-api.herokuapp.com/gimme");
             memeJSON = await memeRes.json();
         }
 
@@ -30,8 +30,8 @@ class MemeCommand extends Command {
 
             .then(json => {
 
-                var {url} = json;
-                MessageSender.reply(data.id, url, token, data.channel_id);
+                var {title, url} = json;
+                MessageSender.reply(data.id, `**${title}**\n${url}`, token, data.channel_id);
 
             })
 
