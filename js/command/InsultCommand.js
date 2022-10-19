@@ -1,38 +1,22 @@
 const {Command} = require("./Command");
 const {MessageSender} = require("../MessageSender");
 const {fetch} = require("undici");
-
-const API_STACKS_KEY = process.env.API_STACKS_KEY;
+const {ProfanityCheck} = require("../ProfanityCheck");
 
 class InsultCommand extends Command {
 
     static command = "insult";
 
-    static cooldownMs = 3000;
+    static cooldownMs = 5000;
     static cooldowns = [];
 
     static description = "Tells a random insult :sob:";
-
-    static async hasProfanity(text) {
-
-        var encodedText = encodeURIComponent(text);
-
-        if (encodedText == undefined) {
-            return false;
-        }
-
-        var res = await fetch(`https://api.apistacks.com/v1/filterprofanity?api_key=${API_STACKS_KEY}&text=${encodedText}`);
-        var resJSON = await res.json();
-
-        return resJSON.data.profane;
-
-    }
 
     static async getInsultText() {
 
         var insultText;
 
-        while (insultText == undefined || (await this.hasProfanity(insultText))) {
+        while (insultText == undefined || (ProfanityCheck.hasProfanity(insultText))) {
             var insultRes = await fetch("https://evilinsult.com/generate_insult.php?type=plain&lang=en&_=1665976803468");
             insultText = await insultRes.text();
         }
