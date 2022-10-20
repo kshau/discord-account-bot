@@ -13,6 +13,7 @@ const { CatCommand } = require("./CatCommand");
 const { CovidCommand } = require("./CovidCommand");
 const { MemeCommand } = require("./MemeCommand");
 const { InsultCommand } = require("./InsultCommand");
+const { FoodCommand } = require("./FoodCommand");
 
 class HelpCommand extends Command {
 
@@ -32,6 +33,7 @@ class HelpCommand extends Command {
             DogCommand, 
             FactCommand,
             FlipCommand, 
+            FoodCommand, 
             InsultCommand, 
             RollCommand,
             SayCommand, 
