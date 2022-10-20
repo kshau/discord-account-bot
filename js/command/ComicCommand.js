@@ -2,26 +2,25 @@ const {Command} = require("./Command");
 const {MessageSender} = require("../MessageSender");
 const {fetch} = require("undici");
 
-class MemeCommand extends Command {
+class ComicCommand extends Command {
 
-    static command = "meme";
+    static command = "comic";
 
     static cooldownMs = 5000;
     static cooldowns = [];
 
-    static description = "Shows a random meme :clown:";
-
-    static subreddits = [
-        "memes", 
-        "wholesomememes", 
-        "memeeconomy"
-    ]
+    static description = "Shows a random comic strip :newspaper:";
 
     static call(args, data, token) {
 
+        var subreddits = [
+            "comics", 
+            "comicstrips"
+        ]
+
         var rng = Math.round(Math.random() * (subreddits.length - 1));
 
-        this.getRandomRedditPostJSON(this.subreddits[rng])
+        this.getRandomRedditPostJSON(subreddits[rng])
 
             .then(json => {
 
@@ -35,4 +34,4 @@ class MemeCommand extends Command {
 
 }
 
-module.exports = {MemeCommand};
+module.exports = {ComicCommand};

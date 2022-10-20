@@ -20,24 +20,24 @@ class FoodCommand extends Command {
         "mexican": "mexicanfood"
     }
 
+    static subreddits = [
+        "chinese",
+        "food",
+        "foods",
+        "greekfood", 
+        "indianfoodphotos", 
+        "italianfood", 
+        "japanesefood",
+        "mexicanfood"
+    ]
+
     static call(args, data, token) {
 
         if (args[0] == undefined) {
-            
-            var subreddits = [
-                "chinese",
-                "food",
-                "foods",
-                "greekfood", 
-                "indianfoodphotos", 
-                "italianfood", 
-                "japanesefood",
-                "mexicanfood"
-            ]
     
             var rng = Math.round(Math.random() * (subreddits.length - 1));
 
-            this.getRandomRedditPostJSON(subreddits[rng])
+            this.getRandomRedditPostJSON(this.subreddits[rng])
 
                 .then(json => {
 

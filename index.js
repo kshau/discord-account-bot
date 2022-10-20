@@ -17,12 +17,14 @@ const { CovidCommand } = require("./js/command/CovidCommand");
 const { MemeCommand } = require("./js/command/MemeCommand");
 const { InsultCommand } = require("./js/command/InsultCommand");
 const { FoodCommand } = require("./js/command/FoodCommand");
+const { ComicCommand } = require("./js/command/ComicCommand");
 
 const TOKEN = process.env.TOKEN;
 const COMMAND_PREFIX = process.env.COMMAND_PREFIX;
 
 const REGISTERED_CMDS = [
     CatCommand, 
+    ComicCommand,
     CovidCommand, 
     DogCommand, 
     FactCommand,

@@ -14,6 +14,7 @@ const { CovidCommand } = require("./CovidCommand");
 const { MemeCommand } = require("./MemeCommand");
 const { InsultCommand } = require("./InsultCommand");
 const { FoodCommand } = require("./FoodCommand");
+const { ComicCommand } = require("./ComicCommand");
 
 class HelpCommand extends Command {
 
@@ -35,6 +36,7 @@ class HelpCommand extends Command {
         {
             "category": "Humor :rofl:", 
             "commands": [
+                ComicCommand,
                 JokeCommand, 
                 MemeCommand
             ]
