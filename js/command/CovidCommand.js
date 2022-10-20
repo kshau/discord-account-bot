@@ -11,6 +11,14 @@ class CovidCommand extends Command {
 
     static description = "Shows COVID-19 stats :mask: | __<country?>__";
 
+    static regionShortcutKey = {
+        "ca": "canada", 
+        "ind": "india", 
+        "uk": "unitedkingdom", 
+        "us": "unitedstates", 
+        "usa": "unitedstates", 
+    }
+
     static async getCovidJSON() {
 
         var covidRes = await fetch("https://api.covid19api.com/summary");
@@ -31,31 +39,7 @@ class CovidCommand extends Command {
                 var regionText;
 
                 if (region != undefined) {
-
-                    switch (region.toLowerCase()) {
-
-                        case "us":
-                            region = "unitedstates";
-                            break;
-
-                        case "usa":
-                            region = "unitedstates";
-                            break;
-
-                        case "uk":
-                            region = "unitedkingdom";
-                            break;
-
-                        case "ca":
-                            region = "canada";
-                            break;  
-
-                        case "ind":
-                            region = "india";
-                            break;
-
-                    }
-
+                    region = this.regionShortcutKey[region.toLowerCase()];
                 }
 
                 var {Message, Global, Countries} = json;
