@@ -9,7 +9,7 @@ class JokeCommand extends Command {
     static cooldownMs = 3000;
     static cooldowns = [];
 
-    static description = "Tells a random joke :rofl:";
+    static description = "Tells a random joke :laughing:";
 
     static async getJokeJSON() {
 

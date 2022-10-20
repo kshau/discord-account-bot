@@ -22,31 +22,63 @@ class HelpCommand extends Command {
     static cooldownMs = 30000;
     static cooldowns = [];
 
-    static description = "Shows this! :smiley:"
+    static description = null;
+
+    static cmds = [
+        {
+            "category": "Animals :dog2:", 
+            "commands": [
+                CatCommand, 
+                DogCommand
+            ]
+        }, 
+        {
+            "category": "Humor :rofl:", 
+            "commands": [
+                JokeCommand, 
+                MemeCommand
+            ]
+        }, 
+        {
+            "category": "Info :scroll:", 
+            "commands": [
+                CovidCommand,
+                FactCommand
+            ]
+        }, 
+        {
+            "category": "RNG :game_die:", 
+            "commands": [
+                FlipCommand, 
+                RollCommand
+            ]
+        }, 
+        {
+            "category": "Miscellaneous :orange_square:", 
+            "commands": [
+                FoodCommand, 
+                InsultCommand, 
+                QuoteCommand, 
+                SayCommand, 
+                ShipCommand, 
+            ]
+        }, 
+    ]
 
     static call(args, data, token) {
 
-        const CMDS = [
-            HelpCommand,
-            CatCommand, 
-            CovidCommand, 
-            DogCommand, 
-            FactCommand,
-            FlipCommand, 
-            FoodCommand, 
-            InsultCommand, 
-            RollCommand,
-            SayCommand, 
-            ShipCommand, 
-            JokeCommand, 
-            MemeCommand, 
-            QuoteCommand
-        ]
+        var msg = ">>> **:dizzy: kshaurya731 :dizzy:**\n══════════════════\n";
 
-        var msg = ">>> **:dizzy: kshaurya731 :dizzy:**\n══════════════════";
+        this.cmds.forEach(c => {
 
-        CMDS.forEach(c => {
-            msg += "\n:arrow_right: ** " + "$" + c.command + "** - " + c.description;
+            msg += `__${c.category}__\n`;
+
+            c.commands.forEach(c => {
+                msg += `:arrow_right: **$${c.command}** - ${c.description}\n`
+            })
+
+            msg += "\n";
+
         });
 
         MessageSender.send(msg, token, data.channel_id);
