@@ -9,31 +9,59 @@ class FoodCommand extends Command {
     static cooldownMs = 5000;
     static cooldowns = [];
 
-    static description = "Shows a random food picture :drool:";
+    static description = "Shows a random food picture :drool: | __<culture?[chinese|greek|indian|italian|japanese|mexican]>__";
 
-    static async getFoodJSON() {
-
-        var foodJSON;
-
-        while (foodJSON == undefined || foodJSON.memes[0].nsfw == true) {
-            var foodRes = await fetch("https://meme-api.herokuapp.com/gimme/food/1");
-            foodJSON = await foodRes.json();
-        }
-
-        return foodJSON.memes[0];
-
+    static subredditKey = {
+        "chinese": "chinesefood",
+        "greek": "greekfood", 
+        "indian": "indianfoodphotos", 
+        "italian": "italianfood", 
+        "japanese": "japanesefood",
+        "mexican": "mexicanfood"
     }
 
     static call(args, data, token) {
 
-        this.getFoodJSON()
+        if (args[0] == undefined) {
+            
+            var subreddits = [
+                "chinese",
+                "food",
+                "foods",
+                "greekfood", 
+                "indianfoodphotos", 
+                "italianfood", 
+                "japanesefood",
+                "mexicanfood"
+            ]
+    
+            var rng = Math.round(Math.random() * (subreddits.length - 1));
 
-            .then(json => {
+            this.getRandomRedditPostJSON(subreddits[rng])
 
-                var {title, url} = json;
-                MessageSender.reply(data.id, `**${title}**\n${url}`, token, data.channel_id);
+                .then(json => {
 
-            })
+                    var {title, url, subreddit} = json;
+                    MessageSender.reply(data.id, `**${title} (from r/${subreddit})**\n${url}`, token, data.channel_id);
+
+                })
+
+        }
+
+        else {
+
+            var foodSubreddit = args[0].toLowerCase();
+
+            this.getRandomRedditPostJSON(this.subredditKey[foodSubreddit])
+
+                .then(json => {
+
+                    var {title, url, subreddit} = json;
+                    MessageSender.reply(data.id, `**${title} (from r/${subreddit})**\n${url}`, token, data.channel_id);
+
+                })
+
+        }
 
     }
 

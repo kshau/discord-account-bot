@@ -11,27 +11,22 @@ class MemeCommand extends Command {
 
     static description = "Shows a random meme :clown:";
 
-    static async getMemeJSON() {
-
-        var memeJSON;
-
-        while (memeJSON == undefined || memeJSON.nsfw == true) {
-            var memeRes = await fetch("https://meme-api.herokuapp.com/gimme");
-            memeJSON = await memeRes.json();
-        }
-
-        return memeJSON;
-
-    }
-
     static call(args, data, token) {
 
-        this.getMemeJSON()
+        var subreddits = [
+            "memes", 
+            "wholesomememes", 
+            "memeeconomy"
+        ]
+
+        var rng = Math.round(Math.random() * (subreddits.length - 1));
+
+        this.getRandomRedditPostJSON(subreddits[rng])
 
             .then(json => {
 
-                var {title, url} = json;
-                MessageSender.reply(data.id, `**${title}**\n${url}`, token, data.channel_id);
+                var {title, url, subreddit} = json;
+                MessageSender.reply(data.id, `**${title} (from r/${subreddit})**\n${url}`, token, data.channel_id);
 
             })
 

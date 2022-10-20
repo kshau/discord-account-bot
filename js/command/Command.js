@@ -86,6 +86,19 @@ class Command {
         return argsStitched;
 
     }
+
+    static async getRandomRedditPostJSON(subreddit) {
+
+        var memeJSON;
+
+        while (memeJSON == undefined || memeJSON.memes[0].nsfw == true) {
+            var memeRes = await fetch(`https://meme-api.herokuapp.com/gimme/${subreddit}/1`);
+            memeJSON = await memeRes.json();
+        }
+
+        return memeJSON.memes[0];
+
+    }
     
 }
 
