@@ -37,7 +37,7 @@ class FoodCommand extends Command {
     
             var rng = Math.round(Math.random() * (subreddits.length - 1));
 
-            this.getRandomRedditPostJSON(this.subreddits[rng])
+            this.getRandomRedditPostJSON(subreddits[rng])
 
                 .then(json => {
 
