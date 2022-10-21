@@ -11,13 +11,13 @@ class MemeCommand extends Command {
 
     static description = "Shows a random meme :clown:";
 
-    static subreddits = [
-        "memes", 
-        "wholesomememes", 
-        "memeeconomy"
-    ]
-
     static call(args, data, token) {
+
+        var subreddits = [
+            "memes", 
+            "wholesomememes", 
+            "memeeconomy"
+        ]
 
         var rng = Math.round(Math.random() * (subreddits.length - 1));
 
