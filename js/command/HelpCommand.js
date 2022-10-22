@@ -15,6 +15,7 @@ const { MemeCommand } = require("./MemeCommand");
 const { InsultCommand } = require("./InsultCommand");
 const { FoodCommand } = require("./FoodCommand");
 const { ComicCommand } = require("./ComicCommand");
+const { ArtCommand } = require("./ArtCommand");
 
 class HelpCommand extends Command {
 
@@ -56,8 +57,9 @@ class HelpCommand extends Command {
             ]
         }, 
         {
-            "category": "Miscellaneous :orange_square:", 
+            "category": "Other :basket:", 
             "commands": [
+                ArtCommand, 
                 FoodCommand, 
                 InsultCommand, 
                 QuoteCommand, 
