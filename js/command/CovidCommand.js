@@ -38,7 +38,7 @@ class CovidCommand extends Command {
                 var covidData;
                 var regionText;
 
-                if (region != undefined) {
+                if (this.regionShortcutKey[region.toLowerCase()] != undefined) {
                     region = this.regionShortcutKey[region.toLowerCase()];
                 }
 
