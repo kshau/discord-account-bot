@@ -36,7 +36,7 @@ class Command {
                     "channelId": data.channel_id
                 });
 
-                Logger.log(`${data.author.username}#${data.author.discriminator} (${data.author.id}) used $${this.command} with args {${args}} in channel ${data.channel_id}.`);
+                Logger.log(`${data.author.username}#${data.author.discriminator} (${data.author.id}) used $${this.command} with args {${args}} in channel ${data.channel_id}`);
 
                 setTimeout(() => {
                     this.cooldowns.splice(this.cooldowns.indexOf({

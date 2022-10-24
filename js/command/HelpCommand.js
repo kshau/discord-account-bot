@@ -69,16 +69,18 @@ class HelpCommand extends Command {
         }, 
     ]
 
+    
+
     static call(args, data, token) {
 
-        var msg = ">>> **:dizzy: kshaurya731 :dizzy:**\n══════════════════\n";
+        var msg = ">>> :dizzy: **𝕜𝕤𝕙𝕒𝕦𝕣𝕪𝕒𝟟𝟛𝟙** :dizzy:\n══════════════════\n";
 
         this.cmds.forEach(c => {
 
-            msg += `__${c.category}__\n`;
+            msg += `**${c.category}**\n`;
 
             c.commands.forEach(c => {
-                msg += `:arrow_right: **$${c.command}** - ${c.description}\n`
+                msg += `\`$${c.command}\` - ${c.description}\n`
             })
 
             msg += "\n";
