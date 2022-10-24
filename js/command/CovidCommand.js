@@ -9,7 +9,7 @@ class CovidCommand extends Command {
     static cooldownMs = 7000;
     static cooldowns = [];
 
-    static description = "Shows COVID-19 stats :mask: | __<country?>__";
+    static description = "Shows COVID-19 stats :mask: `[country]`";
 
     static regionShortcutKey = {
         "ca": "canada", 

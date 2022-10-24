@@ -9,7 +9,7 @@ class FoodCommand extends Command {
     static cooldownMs = 5000;
     static cooldowns = [];
 
-    static description = "Shows a random food picture :drool: | __<culture?[chinese|greek|indian|italian|japanese|mexican]>__";
+    static description = "Shows a random food picture :drool: `[chinese|greek|indian|italian|japanese|mexican]`";
 
     static subredditKey = {
         "chinese": "chinesefood",

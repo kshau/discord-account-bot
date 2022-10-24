@@ -9,7 +9,7 @@ class DogCommand extends Command {
     static cooldownMs = 3000;
     static cooldowns = [];
 
-    static description = "Shows a random dog photo :dog: | __<breed?>__";
+    static description = "Shows a random dog photo :dog: `[breed]`";
 
     static async getDogJSON(breed) {
 
