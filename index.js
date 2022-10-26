@@ -19,6 +19,7 @@ const { InsultCommand } = require("./js/command/InsultCommand");
 const { FoodCommand } = require("./js/command/FoodCommand");
 const { ComicCommand } = require("./js/command/ComicCommand");
 const { ArtCommand } = require("./js/command/ArtCommand");
+const { EightBallCommand } = require("./js/command/EightBallCommand");
 
 const TOKEN = process.env.TOKEN;
 const COMMAND_PREFIX = process.env.COMMAND_PREFIX;
@@ -29,6 +30,7 @@ const REGISTERED_CMDS = [
     ComicCommand,
     CovidCommand, 
     DogCommand, 
+    EightBallCommand,
     FactCommand,
     FlipCommand, 
     FoodCommand, 

@@ -16,6 +16,7 @@ const { InsultCommand } = require("./InsultCommand");
 const { FoodCommand } = require("./FoodCommand");
 const { ComicCommand } = require("./ComicCommand");
 const { ArtCommand } = require("./ArtCommand");
+const { EightBallCommand } = require("./EightBallCommand");
 
 class HelpCommand extends Command {
 
@@ -52,6 +53,7 @@ class HelpCommand extends Command {
         {
             "category": "RNG :game_die:", 
             "commands": [
+                EightBallCommand,
                 FlipCommand, 
                 RollCommand
             ]
