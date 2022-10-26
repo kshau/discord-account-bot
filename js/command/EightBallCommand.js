@@ -12,7 +12,7 @@ class EightBallCommand extends Command {
     static cooldownMs = 3000;
     static cooldowns = [];
 
-    static description = "Tells a random 8-ball response :8ball: <question>";
+    static description = "Tells a random 8-ball response :8ball: `<question>`";
 
     static getEightBallText() {
 
