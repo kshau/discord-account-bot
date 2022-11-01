@@ -14,14 +14,26 @@ class EightBallCommand extends Command {
 
     static description = "Tells a random 8-ball response :8ball: `<question>`";
 
-    static getEightBallText() {
+    static async getEightBallJSON() {
 
-        var eightBallListContent = Fs.readFileSync(Path.resolve(__dirname.replace("\\js\\command", "").replace("/js/command", ""), "./eight_ball_responses.txt")).toString();
-        var eightBallList = eightBallListContent.split("\n");
+        var eightBallJSON;
 
-        var text = eightBallList[Math.floor(Math.random() * eightBallList.length)].replace("\r", "");
+        while (eightBallJSON == undefined) {
 
-        return text;
+            var eightBallJSON;
+
+            try {
+                var eightBallRes = await fetch("https://AccountCommandAPIs.kshauryacoder.repl.co/8ball");
+                eightBallJSON = await eightBallRes.json();
+            }
+            catch(e) {
+                var eightBallRes = await fetch("https://AccountCommandAPIs.kshauryacoder.repl.co/8ball");
+                eightBallJSON = await eightBallRes.json();
+            }
+
+        }
+
+        return eightBallJSON;
 
     }
 
@@ -39,8 +51,16 @@ class EightBallCommand extends Command {
         }
 
         else {
-            var eightBallText = this.getEightBallText();
-            MessageSender.reply(data.id, `**${eightBallText}** :8ball:`, token, data.channel_id);
+
+            this.getEightBallJSON()
+
+                .then(json => {
+
+                    var {text} = json;
+
+                    MessageSender.reply(data.id, `${text} :8ball:`, token, data.channel_id);
+
+                })
         }
 
     }

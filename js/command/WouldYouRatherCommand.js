@@ -18,14 +18,13 @@ class WouldYouRatherCommand extends Command {
         while (WYRJSON == undefined || WYRJSON.text.split(" or ").length != 2) {
 
             var WYRRes;
-            var WYRJSON;
 
             try {
-                WYRRes = await fetch("https://wouldyouratherapi.kshauryacoder.repl.co/api");
+                WYRRes = await fetch("https://AccountCommandAPIs.kshauryacoder.repl.co/wyr");
                 WYRJSON = await WYRRes.json();
             }
             catch(e) {
-                WYRRes = await fetch("https://wouldyouratherapi.kshauryacoder.repl.co/api");
+                WYRRes = await fetch("https://AccountCommandAPIs.kshauryacoder.repl.co/wyr");
                 WYRJSON = await WYRRes.json();
             }
 
