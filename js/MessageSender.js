@@ -33,6 +33,18 @@ class MessageSender {
         });
     }
 
+    static async react(id, reaction, channel_id, token) {
+
+        await fetch(`https://discord.com/api/v9/channels/${channel_id}/messages/${id}/reactions/${reaction}/%40me?location=Message&burst=false`, {
+            "headers": {
+                "authorization": token
+            },
+            "body": null,
+            "method": "PUT"
+        });
+
+    }
+
 }
 
 module.exports = {MessageSender};

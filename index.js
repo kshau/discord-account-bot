@@ -20,6 +20,9 @@ const { FoodCommand } = require("./js/command/FoodCommand");
 const { ComicCommand } = require("./js/command/ComicCommand");
 const { ArtCommand } = require("./js/command/ArtCommand");
 const { EightBallCommand } = require("./js/command/EightBallCommand");
+const { WouldYouRatherCommand } = require("./js/command/WouldYouRatherCommand");
+
+const { WouldYouRather } = require("./js/WouldYouRather");
 
 const TOKEN = process.env.TOKEN;
 const COMMAND_PREFIX = process.env.COMMAND_PREFIX;
@@ -41,7 +44,8 @@ const REGISTERED_CMDS = [
     ShipCommand, 
     JokeCommand, 
     MemeCommand, 
-    QuoteCommand
+    QuoteCommand, 
+    WouldYouRatherCommand,
 ]
 
 function wsConnect() {
@@ -84,6 +88,8 @@ function wsConnect() {
         switch (t) {
 
             case "MESSAGE_CREATE":
+
+                WouldYouRather.check(d, TOKEN)
 
                 if (d.content.startsWith(COMMAND_PREFIX)) {
 

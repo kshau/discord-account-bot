@@ -5,6 +5,7 @@ const {fetch} = require("undici");
 const { ArgumentError } = require("./error/ArgumentError");
 const { CooldownError } = require("./error/CooldownError");
 
+const TOKEN = process.env.TOKEN;
 const COMMAND_PREFIX = process.env.COMMAND_PREFIX;
 
 class Command {
@@ -16,7 +17,7 @@ class Command {
 
     static description = null;
 
-    static listen(data, token) {
+    static listen(data) {
 
         if (data.content.toLowerCase().replace(COMMAND_PREFIX, "").split(" ")[0] == this.command) {
 
@@ -30,7 +31,7 @@ class Command {
 
                 var args = data.content.replace(/ +(?= )/g,'').split(" ").splice(1);
 
-                this.call(args, data, token);
+                this.call(args, data, TOKEN);
                 this.cooldowns.push({
                     "userId": data.author.id, 
                     "channelId": data.channel_id
@@ -51,13 +52,13 @@ class Command {
 
                 if (err instanceof ArgumentError) {
 
-                    MessageSender.reply(data.id, "**Invalid arguments!** :x:", token, data.channel_id);
+                    MessageSender.reply(data.id, "**Invalid arguments!** :x:", TOKEN, data.channel_id);
 
                 }
 
                 else if (err instanceof CooldownError) {
 
-                    MessageSender.reply(data.id, `**That command has a ${this.cooldownMs / 1000} second cooldown!** :watch:`, token, data.channel_id);
+                    MessageSender.reply(data.id, `**That command has a ${this.cooldownMs / 1000} second cooldown!** :watch:`, TOKEN, data.channel_id);
 
                 }
 
@@ -98,6 +99,10 @@ class Command {
 
         return memeJSON.memes[0];
 
+    }
+
+    static capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
     }
     
 }

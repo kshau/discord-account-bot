@@ -17,6 +17,7 @@ const { FoodCommand } = require("./FoodCommand");
 const { ComicCommand } = require("./ComicCommand");
 const { ArtCommand } = require("./ArtCommand");
 const { EightBallCommand } = require("./EightBallCommand");
+const { WouldYouRatherCommand } = require("./WouldYouRatherCommand");
 
 class HelpCommand extends Command {
 
@@ -40,7 +41,8 @@ class HelpCommand extends Command {
             "commands": [
                 ComicCommand,
                 JokeCommand, 
-                MemeCommand
+                MemeCommand, 
+                WouldYouRatherCommand
             ]
         }, 
         {
