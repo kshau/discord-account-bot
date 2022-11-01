@@ -6,7 +6,7 @@ class WouldYouRatherCommand extends Command {
 
     static command = "wouldyourather";
 
-    static cooldownMs = 3000;
+    static cooldownMs = 10000;
     static cooldowns = [];
 
     static description = "Asks a random would-you-rather question :thinking:";
