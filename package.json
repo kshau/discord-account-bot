@@ -1,5 +1,5 @@
 {
-  "name": "discord-account-commands",
+  "name": "discord-account-bot",
   "version": "1.0.0",
   "description": "This program makes a Discord account into a server bot. ",
   "main": "index.js",
